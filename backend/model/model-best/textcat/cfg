@@ -1,0 +1,16 @@
+{
+  "labels":[
+    "ACCOMPLISHMENTS",
+    "INTERESTS",
+    "LANGUAGES",
+    "CERTIFICATIONS",
+    "SUMMARY",
+    "PROJECTS",
+    "EDUCATION",
+    "EXPERIENCE",
+    "AWARDS",
+    "SKILLS"
+  ],
+  "threshold":0.0,
+  "positive_label":null
+}

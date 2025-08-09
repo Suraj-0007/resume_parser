@@ -1,0 +1,50 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.env
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+*.log
+
+# ---- FastAPI / Uvicorn ----
+*.sqlite3
+instance/
+uploads/
+*.db
+
+# ---- Node / Frontend ----
+node_modules/
+dist/
+.next/
+.cache/
+
+# ---- OS & Editor ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ---- Tests ----
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ---- Build Artifacts ----
+build/
+tmp/
+*.zip
+*.tar.gz
+
+# ---- Azure / Keys ----
+*.azureml/
+*.pem

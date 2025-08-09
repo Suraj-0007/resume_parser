@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bulk Resume Match</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app__header">
+      <div class="brand">
+        <div class="logo">📂</div>
+        <div class="brand__text">
+          <h1>Bulk Resume Match</h1>
+          <p>Match multiple resumes against one JD</p>
+        </div>
+      </div>
+      <div class="header__actions">
+        <a class="btn btn--secondary" href="index.html">← Back to Single</a>
+      </div>
+    </header>
+
+    <main class="grid grid--single">
+      <section class="card">
+        <div class="card__header">
+          <h2>Upload Resumes & Paste JD</h2>
+          <p class="muted">Drag multiple PDFs or use browse. Paste a JD and click “Match All”.</p>
+        </div>
+
+        <!-- Dropzone -->
+        <div id="dropBulk" class="dropzone" role="button" tabindex="0" aria-label="Drop multiple PDF resumes here">
+          <input type="file" id="bulkResumes" accept=".pdf" multiple hidden />
+          <div class="dropzone__icon">📄📄📄</div>
+          <div class="dropzone__text">
+            <strong>Drag & drop</strong> PDFs here, or
+            <button class="link" id="browseBulk" type="button">browse</button>
+          </div>
+        </div>
+
+        <!-- Selected files summary -->
+        <div class="selected" id="bulkSelected">No files selected</div>
+
+        <!-- JD textarea -->
+        <label class="label" for="bulkJDTextarea">Job Description</label>
+        <textarea id="bulkJDTextarea" class="editor" placeholder="Paste JD text here…" rows="10"></textarea>
+        <div class="muted" id="bulkJDCount">0 characters</div>
+
+        <div class="actions">
+          <button type="button" id="bulkMatchButton" class="btn">Match All</button>
+          <button type="button" id="backButton" class="btn btn--secondary">Back</button>
+        </div>
+
+        <div id="loading" class="loader hidden">
+          <span class="spinner"></span> Processing…
+        </div>
+
+        <!-- Output -->
+        <div id="bulkOutput" class="stack"></div>
+
+        <!-- Toast -->
+        <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="app__footer">
+      <span class="muted">© 2025 • Resume Intelligence</span>
+    </footer>
+  </div>
+
+  <script>
+    window.API_BASE = window.API_BASE || "http://127.0.0.1:8000";
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

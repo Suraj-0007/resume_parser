@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resume Parser + JD Match</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app__header">
+      <div class="brand">
+        <div class="logo">🧠</div>
+        <div class="brand__text">
+          <h1>Resume Intelligence</h1>
+          <p>Parse resumes • Match JDs</p>
+        </div>
+      </div>
+      <div class="header__actions">
+        <a class="btn btn--secondary" href="bulk.html">Bulk Resume Match →</a>
+      </div>
+    </header>
+
+    <!-- Split layout -->
+    <main class="grid grid--two">
+      <!-- LEFT: Parse Only -->
+      <section class="card">
+        <div class="card__header">
+          <h2>Upload & Extract</h2>
+          <p class="muted">Parse a resume and view structured sections.</p>
+        </div>
+
+        <div id="dropParse" class="dropzone" role="button" tabindex="0" aria-label="Drop a PDF to parse">
+          <input type="file" id="fileInput" accept=".pdf" hidden />
+          <div class="dropzone__icon">📄</div>
+          <div class="dropzone__text">
+            <strong>Drag & drop</strong> a PDF here, or <button class="link" id="browseParse" type="button">browse</button>
+          </div>
+        </div>
+        <div class="selected" id="parseSelected">No file selected</div>
+
+        <div class="actions">
+          <button type="button" id="uploadButton" class="btn">Upload & Extract</button>
+        </div>
+
+        <div id="loading" class="loader hidden">
+          <span class="spinner"></span> Processing…
+        </div>
+
+        <div id="output" class="stack"></div>
+      </section>
+
+      <!-- RIGHT: Single JD Match -->
+      <section class="card">
+        <div class="card__header">
+          <h2>JD Matching (Single)</h2>
+          <p class="muted">Upload a resume and paste a job description.</p>
+        </div>
+
+        <div id="dropSingle" class="dropzone" role="button" tabindex="0" aria-label="Drop a PDF for JD matching">
+          <input type="file" id="singleResumeInput" accept=".pdf" hidden />
+          <div class="dropzone__icon">📄</div>
+          <div class="dropzone__text">
+            <strong>Drag & drop</strong> a PDF here, or <button class="link" id="browseSingle" type="button">browse</button>
+          </div>
+        </div>
+        <div class="selected" id="singleSelected">No file selected</div>
+
+        <label class="label" for="jdTextarea">Job Description</label>
+        <textarea id="jdTextarea" class="editor" placeholder="Paste JD text here…" rows="10"></textarea>
+        <div class="muted" id="jdCount">0 characters</div>
+
+        <div class="actions">
+          <button type="button" id="jdButton" class="btn">Match JD with Resume</button>
+        </div>
+
+        <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="app__footer">
+      <span class="muted">© 2025 • Resume Intelligence</span>
+    </footer>
+  </div>
+
+  <script>
+    // Set your backend base URL here (prod/local)
+    // Example prod: "https://resume-parser-backend-ffbt.onrender.com"
+    window.API_BASE = window.API_BASE || "http://127.0.0.1:8000";
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
